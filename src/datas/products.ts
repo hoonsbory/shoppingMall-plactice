@@ -1,6 +1,6 @@
-import { IProductItem } from '@/interfaces/productInterface';
+import { IProduct } from '@/interfaces/productInterface';
 
-export const productItems: IProductItem[] = [
+export const products: IProduct[] = [
   {
     item_no: 122997,
     item_name: '스탠리 클래식 런치박스',
