@@ -1,9 +1,4 @@
-export interface ICoupon {
-  type: string;
-  title: string;
-  discountRate?: number;
-  discountAmount?: number;
-}
+import { ICoupon } from '@/interfaces/couponInterface';
 
 export const coupons: ICoupon[] = [
   {
