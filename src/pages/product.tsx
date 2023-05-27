@@ -7,6 +7,7 @@ import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import Layout from '@/components/common/Layout';
+import ProductSkeleton from '@/components/product/ProductSkeleton';
 
 const ProductWrapper = dynamic(() => import('@/components/product/ProductWrapper'), {
   ssr: false,
@@ -40,21 +41,19 @@ const Product = () => {
       </Head>
 
       <Layout>
-        <main>
-          <PromiseHandler
-            FulfilledComponent={
-              <>
-                <ProductWrapper
-                  queryKey={['getProductItems', selectedPage]}
-                  queryFn={getProductItems}
-                />
-                <Pagination count={count} productCount={productCount} selectedPage={selectedPage} />
-              </>
-            }
-            PendingComponent={<div>로딩중입니다</div>}
-            RejectComponent={<div>에러가 발생했습니다.</div>}
-          />
-        </main>
+        <PromiseHandler
+          FulfilledComponent={
+            <>
+              <ProductWrapper
+                queryKey={['getProductItems', selectedPage]}
+                queryFn={getProductItems}
+              />
+            </>
+          }
+          PendingComponent={<ProductSkeleton />}
+          RejectComponent={<div>에러가 발생했습니다.</div>}
+        />
+        <Pagination count={count} productCount={productCount} selectedPage={selectedPage} />
       </Layout>
     </>
   );
