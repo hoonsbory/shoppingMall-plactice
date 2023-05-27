@@ -1,4 +1,5 @@
-import { ReactNode } from 'react';
+import useHydrated from '@/hooks/useHydrated';
+import { ReactNode, useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 
 interface IPortal {
@@ -7,8 +8,12 @@ interface IPortal {
 }
 
 const Portal = ({ children, selector }: IPortal) => {
-  const element = typeof window !== 'undefined' && document.querySelector(selector);
-  return element && children ? ReactDOM.createPortal(children, element) : null;
+  const element = useHydrated(document.querySelector(selector));
+  if (!element) {
+    return <></>;
+  }
+
+  return ReactDOM.createPortal(children, element);
 };
 
 export default Portal;
