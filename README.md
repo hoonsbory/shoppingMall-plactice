@@ -63,3 +63,9 @@ data를 fetching하는 컴포넌트를 ssr : false 옵션으로 dynamic import�
 $ npm install
 $ npm run dev
 ```
+
+#### 접속
+
+```
+ http://localhost:3000
+```
