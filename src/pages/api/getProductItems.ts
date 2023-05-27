@@ -1,4 +1,4 @@
-import { products } from '@/datas/productItems';
+import { products } from '@/datas/products';
 import { IProducts } from '@/interfaces/productInterface';
 import type { NextApiRequest, NextApiResponse } from 'next';
 
@@ -15,5 +15,5 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<IProdu
       products: filteredProductItems,
       productsTotalCount: products.length,
     });
-  }, 1500);
+  }, 1000);
 }
