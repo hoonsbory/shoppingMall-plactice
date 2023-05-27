@@ -1,5 +1,5 @@
 import Modal from '@/components/common/Modal';
-import Portal from '@/components/common/Protal';
+import Portal from '@/components/common/Portal';
 import ProductBox from '@/components/product/ProductBox';
 import { IProducts } from '@/interfaces/productInterface';
 import useCartStore from '@/store/cartStore';
