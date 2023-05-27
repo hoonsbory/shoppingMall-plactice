@@ -25,6 +25,7 @@ const ProductWrapper = ({ queryFn, queryKey }: IProductWrapper) => {
         {data &&
           data.products.map(product => (
             <ProductBox
+              key={product.item_no}
               product={product}
               // 카트에 담겨진 상품 판별
               isCarted={cartedProducts.some(i => i.item_no === product.item_no)}

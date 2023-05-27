@@ -82,8 +82,8 @@ const cart = () => {
         <div css={tableCellCss('200px')}>수량</div>
         <div css={tableCellCss('200px')}>주문금액</div>
       </div>
-      {products.map((product, idx) => (
-        <CartItem product={product} />
+      {products.map(product => (
+        <CartItem product={product} key={product.item_no} />
       ))}
       <PromiseHandlerComponent
         FulfilledComponent={<SelectCoupon handleSelectChange={handleSelectChange} />}

@@ -21,7 +21,12 @@ const SelectCoupon = ({
       <option value="" hidden>
         쿠폰을 선택해주세요
       </option>
-      {coupons && coupons.map((coupon, idx) => <option value={idx}>{coupon.title}</option>)}
+      {coupons &&
+        coupons.map((coupon, idx) => (
+          <option key={coupon.title} value={idx}>
+            {coupon.title}
+          </option>
+        ))}
     </select>
   );
 };
