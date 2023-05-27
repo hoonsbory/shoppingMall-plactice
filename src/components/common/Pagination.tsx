@@ -47,7 +47,7 @@ const Pagination = ({ count, productCount, selectedPage }: IPagination) => {
 
       {/* visible 페이지 버튼 */}
       {visiblePage.map(page => (
-        <Link href={path + page} css={linkCss(selectedPage === page)}>
+        <Link key={page} href={path + page} css={linkCss(selectedPage === page)}>
           {page}
         </Link>
       ))}
