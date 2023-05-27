@@ -76,16 +76,18 @@ const wrapper = css`
   margin: 40px 0px;
   display: inline-block;
   position: relative;
-  padding: 0 50px;
   text-align: center;
   line-height: 22px;
   vertical-align: top;
   color: var(--lightGrey);
   a {
-    padding: 0 10px !important;
-    font-size: 48px !important;
+    padding: 0 10px;
+    font-size: 6vw;
     line-height: 55px;
     text-decoration: none;
+    @media screen and (min-width: 744px) {
+      font-size: 40px;
+    }
   }
 `;
 
@@ -95,8 +97,8 @@ const Arrow = ({ direction }: { direction: string }) => {
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 42 80"
       css={css`
-        width: 11px;
-        height: 22px;
+        max-width: 11px;
+        width: 2vw;
       `}
     >
       <path
