@@ -1,13 +1,12 @@
-import { boxCss } from '@/components/product/ProductBox';
-import { wrapperCss } from '@/components/product/ProductWrapper';
+import { productBoxCss, productBoxWrapperCss } from '@/styles/product';
 import { css } from '@emotion/react';
 
 const ProductSkeleton = () => {
   const arr = Array(5).fill(0);
   return (
-    <ul css={wrapperCss}>
+    <ul css={productBoxWrapperCss}>
       {arr.map(_ => (
-        <li css={boxCss}>
+        <li css={productBoxCss}>
           <div
             css={css`
               ${bg}

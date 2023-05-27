@@ -2,7 +2,7 @@ import CommonBtn from '@/components/common/CommonBtn';
 import { IProduct } from '@/interfaces/productInterface';
 import useCartStore from '@/store/cartStore';
 import useModalStore from '@/store/modalStore';
-import { css } from '@emotion/react';
+import { productBoxCss } from '@/styles/product';
 import Image from 'next/image';
 
 const ProductBox = ({ product, isCarted }: { product: IProduct; isCarted: boolean }) => {
@@ -24,7 +24,7 @@ const ProductBox = ({ product, isCarted }: { product: IProduct; isCarted: boolea
     toggleModal('상품이 장바구니에서 제거되었습니다.');
   };
   return (
-    <li css={boxCss}>
+    <li css={productBoxCss}>
       <div>
         <Image
           src={product.detail_image_url}
@@ -47,24 +47,3 @@ const ProductBox = ({ product, isCarted }: { product: IProduct; isCarted: boolea
 };
 
 export default ProductBox;
-
-export const boxCss = css`
-  list-style-type: none;
-  width: 300px;
-  display: inline;
-  div:first-child {
-    width: 100%;
-    height: 300px;
-    position: relative;
-  }
-  div:last-child {
-    p {
-      font-weight: 600;
-      margin-top: 10px;
-      margin-bottom: 10px;
-    }
-    span {
-      margin-right: 10px;
-    }
-  }
-`;
