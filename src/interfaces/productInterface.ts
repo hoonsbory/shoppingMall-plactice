@@ -14,4 +14,5 @@ export interface IProducts {
 
 export interface ICartProduct extends IProduct {
   quantity: number;
+  isChecked: boolean;
 }
