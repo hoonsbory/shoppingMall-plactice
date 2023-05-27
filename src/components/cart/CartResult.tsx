@@ -14,15 +14,17 @@ const CartResult = ({ totalOrderPrice, discountedPrice, totalPaymentPrice }: ICa
         <div css={tableRow('36%')}>총 결제금액</div>
       </div>
       <div css={commonTableCss}>
-        <div css={tableRow('36%')}>{totalOrderPrice.toLocaleString()}원</div>
-        <div css={tableRow('28%')}>{discountedPrice.toLocaleString()}원</div>
-        <div css={tableRow('36%')}>{totalPaymentPrice.toLocaleString()}원</div>
+        <div css={tableRow('36%')}>{formatPrice(totalOrderPrice)}원</div>
+        <div css={tableRow('28%')}>{formatPrice(discountedPrice)}원</div>
+        <div css={tableRow('36%')}>{formatPrice(totalPaymentPrice)}원</div>
       </div>
     </section>
   );
 };
 
 export default CartResult;
+
+const formatPrice = (price: number) => Math.floor(price).toLocaleString();
 
 const sectionCss = css`
   margin: 117px auto 137px;
