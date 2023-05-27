@@ -9,6 +9,7 @@ const CommonBtn = ({ children, onClick }: { children: string; onClick: () => voi
         background: black;
         color: white;
         border-radius: 5px;
+        min-width: 100px;
       `}
     >
       {children}
