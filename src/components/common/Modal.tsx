@@ -1,5 +1,6 @@
 import CommonBtn from '@/components/common/CommonBtn';
 import useModalStore from '@/store/modalStore';
+import { flexMiddleAlign } from '@/styles/common';
 import { css } from '@emotion/react';
 
 const Modal = () => {
@@ -9,9 +10,7 @@ const Modal = () => {
   return (
     <div
       css={css`
-        display: flex;
-        flex-direction: column;
-        justify-content: space-evenly;
+        ${flexMiddleAlign('column')}
         opacity: ${isShow ? 1 : 0};
         transition: opacity 0.5s;
         position: fixed;
@@ -23,10 +22,15 @@ const Modal = () => {
         border-radius: 10px;
         padding: 10px 30px;
         height: 150px;
+        width: 70vw;
+        max-width: 300px;
         visibility: ${isShow ? 'visible' : 'hidden'};
         background: white;
         word-break: keep-all;
         z-index: 900;
+        p {
+          margin-bottom: 20px;
+        }
       `}
     >
       <p>{content}</p>
