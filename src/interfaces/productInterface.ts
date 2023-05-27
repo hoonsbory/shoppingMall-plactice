@@ -11,3 +11,7 @@ export interface IProducts {
   products: IProduct[];
   productsTotalCount: number;
 }
+
+export interface ICartProduct extends IProduct {
+  quantity: number;
+}
