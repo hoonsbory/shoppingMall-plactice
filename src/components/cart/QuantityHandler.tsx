@@ -2,9 +2,10 @@ import useCartStore from '@/store/cartStore';
 import { css } from '@emotion/react';
 import React, { ChangeEvent, useEffect, useState } from 'react';
 import { commonTableCellCss } from '@/styles/cart';
+import { flexMiddleAlign } from '@/styles/common';
 
 //수량 핸들러
-const QuantityHandler = ({ prevQuantity, idx }: { prevQuantity: number; idx: number }) => {
+const QuantityHandler = ({ prevQuantity, item_no }: { prevQuantity: number; item_no: number }) => {
   const [quantity, setQuantity] = useState(prevQuantity);
   const updateQuantity = useCartStore(state => state.updateQuantity);
 
@@ -18,7 +19,7 @@ const QuantityHandler = ({ prevQuantity, idx }: { prevQuantity: number; idx: num
 
   const handleMinus = () => setQuantity(quantity => (quantity !== 1 ? quantity - 1 : quantity));
 
-  useEffect(() => updateQuantity(quantity, idx), [quantity]);
+  useEffect(() => updateQuantity(quantity, item_no), [quantity]);
   return (
     <div css={quantityHandlerCss}>
       <div>
@@ -68,11 +69,7 @@ const quantityHandlerCss = css`
   }
 `;
 const buttonCss = (borderDirection: string) => css`
-    display: flex;
-    -webkit-box-align: center;
-    align-items: center;
-    -webkit-box-pack: center;
-    justify-content: center;
+    ${flexMiddleAlign('row')}
     min-height: 25px;
     width: 36px;
     height: 36px;

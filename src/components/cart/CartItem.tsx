@@ -1,22 +1,23 @@
 import ProductInfo from '@/components/cart/ProductInfo';
 import QuantityHandler from '@/components/cart/QuantityHandler';
-import CommonCheckBox, { ICheckBox } from '@/components/common/CommonCheckBox';
+import CommonCheckBox from '@/components/common/CommonCheckBox';
 import { ICartProduct } from '@/interfaces/productInterface';
+import useCartStore from '@/store/cartStore';
+import { commonTableCellCss, commonTableCss } from '@/styles/cart';
 import { css } from '@emotion/react';
 import React from 'react';
-interface ICartItem extends ICheckBox {
-  product: ICartProduct;
-}
-const CartItem = ({ product, toggleCheck, isChecked, id }: ICartItem) => {
-  const { price, quantity } = product;
+const CartItem = ({ product }: { product: ICartProduct }) => {
+  const { price, quantity, isChecked, item_no } = product;
+  const toggleCheck = useCartStore(state => state.toggleCheck);
+
   return (
     <div css={{ position: 'relative' }}>
-      <div css={tableCss}>
+      <div css={commonTableCss}>
         <div css={checkboxTableCss}>
-          <CommonCheckBox toggleCheck={toggleCheck} isChecked={isChecked} id={id} />
+          <CommonCheckBox toggleCheck={toggleCheck} isChecked={isChecked} id={item_no} />
         </div>
         <ProductInfo product={product} />
-        <QuantityHandler idx={id as number} prevQuantity={quantity} />
+        <QuantityHandler item_no={item_no} prevQuantity={quantity} />
         <OrderPrice price={price} quantity={quantity} />
       </div>
     </div>
@@ -25,30 +26,14 @@ const CartItem = ({ product, toggleCheck, isChecked, id }: ICartItem) => {
 
 export default CartItem;
 
-const tableCss = css`
-  position: relative;
-  display: table;
-  width: 100%;
-  table-layout: fixed;
-`;
-
-const tableCellCommonCss = css`
-  display: table-cell;
-  font-size: 18px;
-  line-height: 24px;
-  color: rgb(0, 0, 0);
-  vertical-align: middle;
-  border-top: 1px solid rgb(228, 228, 228);
-`;
-
 const checkboxTableCss = css`
-  ${tableCellCommonCss}
+  ${commonTableCellCss}
   text-align: center;
   width: 4.3%;
 `;
 
 const orderPriceCss = css`
-  ${tableCellCommonCss}
+  ${commonTableCellCss}
   padding: 30px 0px;
   text-align: center;
   vertical-align: middle;

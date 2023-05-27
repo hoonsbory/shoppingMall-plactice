@@ -11,10 +11,6 @@ const productInfoCss = css`
   padding: 27px 60px 30px 0px;
   text-align: left;
   button {
-    -webkit-box-align: center;
-    align-items: center;
-    -webkit-box-pack: center;
-    justify-content: center;
     min-height: 25px;
     display: block;
     overflow: hidden;
