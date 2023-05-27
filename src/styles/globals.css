@@ -17,6 +17,11 @@
     background: black;
   }
 }
+
+img[loading='lazy'] {
+  background: var(--lightGrey);
+  transition: all 0.5s;
+}
 select {
   width: 200px;
   height: 35px;
