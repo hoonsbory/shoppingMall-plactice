@@ -1,9 +1,13 @@
+import useHydrated from '@/hooks/useHydrated';
 import useCartStore from '@/store/cartStore';
+import { flexMiddleAlign } from '@/styles/common';
 import { css } from '@emotion/react';
 import Link from 'next/link';
+import React, { useEffect, useState } from 'react';
 
 const Header = () => {
   const cartLength = useCartStore(state => state.products).length;
+  const afterHydrated = useHydrated<number>(cartLength);
   return (
     <header css={headerCss}>
       <div>
@@ -14,14 +18,14 @@ const Header = () => {
           <span></span>
           <strong>SHOPPING BAG</strong>
           {/* 카트에 담긴 게 있을때만 렌더 */}
-          {cartLength > 0 && <div css={cartLengthCircle}>{cartLength}</div>}
+          {afterHydrated > 0 && <div css={cartLengthCircle}>{afterHydrated}</div>}
         </Link>
       </div>
     </header>
   );
 };
 
-export default Header;
+export default React.memo(Header);
 
 const headerCss = css`
   top: 0;
@@ -53,8 +57,6 @@ const headerCss = css`
     right: 50px;
     top: 22px;
     vertical-align: top;
-    display: flex;
-    align-content: center;
     a {
       position: relative;
       display: inline-block;
