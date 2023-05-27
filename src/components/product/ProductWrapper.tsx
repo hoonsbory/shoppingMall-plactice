@@ -1,10 +1,9 @@
 import Modal from '@/components/common/Modal';
 import Portal from '@/components/common/Protal';
 import ProductBox from '@/components/product/ProductBox';
-import { IProducts, IProduct } from '@/interfaces/productInterface';
+import { IProducts } from '@/interfaces/productInterface';
 import useCartStore from '@/store/cartStore';
-import useModalStore from '@/store/modalStore';
-import { css } from '@emotion/react';
+import { productBoxWrapperCss } from '@/styles/product';
 import { useQuery } from 'react-query';
 interface IProductWrapper {
   queryFn: () => Promise<IProducts>;
@@ -13,6 +12,7 @@ interface IProductWrapper {
 
 const ProductWrapper = ({ queryFn, queryKey }: IProductWrapper) => {
   const cartedProducts = useCartStore(state => state.products);
+
   const { data } = useQuery(queryKey, queryFn);
 
   data?.products.sort((a, b) => b.score - a.score);
@@ -21,7 +21,7 @@ const ProductWrapper = ({ queryFn, queryKey }: IProductWrapper) => {
       <Portal selector="#portal">
         <Modal />
       </Portal>
-      <ul css={wrapperCss}>
+      <div css={productBoxWrapperCss}>
         {data &&
           data.products.map(product => (
             <ProductBox
@@ -30,17 +30,8 @@ const ProductWrapper = ({ queryFn, queryKey }: IProductWrapper) => {
               isCarted={cartedProducts.some(i => i.item_no === product.item_no)}
             />
           ))}
-      </ul>
+      </div>
     </>
   );
 };
 export default ProductWrapper;
-
-export const wrapperCss = css`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, max-content));
-  column-gap: 15px;
-  row-gap: 70px;
-  justify-content: center;
-  padding: initial;
-`;
