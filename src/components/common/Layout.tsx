@@ -1,4 +1,5 @@
 import Header from '@/components/common/Header';
+import { flexMiddleAlign } from '@/styles/common';
 import { css } from '@emotion/react';
 import { ReactNode } from 'react';
 
@@ -8,9 +9,6 @@ const Layout = ({ children }: { children: ReactNode }) => {
       css={css`
         margin-left: 7vw;
         margin-right: 7vw;
-        display: flex;
-        flex-direction: column;
-        align-content: center;
       `}
     >
       <Header />
