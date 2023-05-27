@@ -5,6 +5,30 @@ import { css } from '@emotion/react';
 import Image from 'next/image';
 import React from 'react';
 
+//카트 상품 정보 칸
+const ProductInfo = ({ product }: { product: IProduct }) => {
+  const deleteProduct = useCartStore(state => state.deleteProduct);
+  return (
+    <div css={productInfoCss}>
+      <div css={innerFlexBox}>
+        <Image
+          src={product.detail_image_url}
+          width={110}
+          height={110}
+          alt={product.item_name + '이미지'}
+        />
+        <div>
+          <p>{product.item_name}</p>
+          <span>{product.price.toLocaleString()}원</span>
+        </div>
+      </div>
+      <button onClick={() => deleteProduct(product.item_no)}></button>
+    </div>
+  );
+};
+
+export default React.memo(ProductInfo);
+
 const productInfoCss = css`
   ${commonTableCellCss}
   position: relative;
@@ -38,27 +62,3 @@ const innerFlexBox = css`
     font-size: 14px;
   }
 `;
-
-//카트 상품 정보 칸
-const ProductInfo = ({ product }: { product: IProduct }) => {
-  const deleteProduct = useCartStore(state => state.deleteProduct);
-  return (
-    <div css={productInfoCss}>
-      <div css={innerFlexBox}>
-        <Image
-          src={product.detail_image_url}
-          width={110}
-          height={110}
-          alt={product.item_name + '이미지'}
-        />
-        <div>
-          <p>{product.item_name}</p>
-          <span>{product.price.toLocaleString()}원</span>
-        </div>
-      </div>
-      <button onClick={() => deleteProduct(product.item_no)}></button>
-    </div>
-  );
-};
-
-export default React.memo(ProductInfo);

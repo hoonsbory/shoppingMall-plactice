@@ -11,7 +11,7 @@ const CartItem = ({ product }: { product: ICartProduct }) => {
   const toggleCheck = useCartStore(state => state.toggleCheck);
 
   return (
-    <div css={{ position: 'relative' }}>
+    <div>
       <div css={commonTableCss}>
         <div css={checkboxTableCss}>
           <CommonCheckBox toggleCheck={toggleCheck} isChecked={isChecked} id={item_no} />
@@ -32,6 +32,10 @@ const checkboxTableCss = css`
   width: 4.3%;
 `;
 
+const OrderPrice = React.memo(({ price, quantity }: { price: number; quantity: number }) => {
+  return <div css={orderPriceCss}>{(price * quantity).toLocaleString()}원</div>;
+});
+
 const orderPriceCss = css`
   ${commonTableCellCss}
   padding: 30px 0px;
@@ -40,6 +44,3 @@ const orderPriceCss = css`
   width: 200px;
   font-weight: 600;
 `;
-const OrderPrice = React.memo(({ price, quantity }: { price: number; quantity: number }) => {
-  return <div css={orderPriceCss}>{(price * quantity).toLocaleString()}원</div>;
-});

@@ -13,7 +13,7 @@ export const productBoxCss = css`
   list-style-type: none;
   width: 300px;
   display: inline;
-  div:first-child {
+  div:first-of-type {
     width: 100%;
     height: 300px;
     position: relative;

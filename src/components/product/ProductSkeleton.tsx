@@ -2,31 +2,15 @@ import { productBoxCss, productBoxWrapperCss } from '@/styles/product';
 import { css } from '@emotion/react';
 
 const ProductSkeleton = () => {
-  const arr = Array(5).fill(0);
+  const skeletonLength = Array(5).fill(0);
   return (
     <ul css={productBoxWrapperCss}>
-      {arr.map(_ => (
-        <li css={productBoxCss}>
-          <div
-            css={css`
-              ${bg}
-            `}
-          ></div>
+      {skeletonLength.map((_, idx) => (
+        <li key={idx} css={productBoxCss}>
+          <div css={skeletonCss()}></div>
           <div>
-            <p
-              css={css`
-                ${bg}
-                width: 80%;
-                height: 15px;
-              `}
-            ></p>
-            <p
-              css={css`
-                ${bg}
-                width: 20%;
-                height: 10px;
-              `}
-            ></p>
+            <p css={skeletonCss('80%', '15px')}></p>
+            <p css={skeletonCss('20%', '10px')}></p>
           </div>
         </li>
       ))}
@@ -36,6 +20,12 @@ const ProductSkeleton = () => {
 
 const bg = css`
   background: var(--lightGrey);
+`;
+
+const skeletonCss = (width: string = 'unset', height: string = 'unset') => css`
+  ${bg}
+  width : ${width};
+  height: ${height};
 `;
 
 export default ProductSkeleton;
