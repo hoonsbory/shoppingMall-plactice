@@ -1,12 +1,11 @@
-<h1 align="center">29cm Front-End Mission 👋</h1>
+<h1 align="center">Shopping Mall Cart Practice 👋</h1>
 
 <br>
 
-![](https://pds.joongang.co.kr/svcimg/newsletter/content/202205/03/74e73d6d-adae-47bc-8071-6c2ccace2802.jpg) <br>
 
 ## :page_with_curl: 소개
 
-> 프론트엔드 서류 지원한 신재훈 입니다. <br>
+> 쇼핑몰의 장바구니를 구현한 토이프로젝트입니다.<br>
 
 ### 주요기능
 
@@ -31,8 +30,8 @@ pre render => hydrate (fetching) => 완료전까지 fallback UI render (pending)
 실제로 동작은 달랐습니다.
 pre render => data fetch 될때까지 기다림 => hydrate => 다시 data fetch => data render
 
-특이한건 pre render때 fetching을 해놓고 hydrate하면서 다시 fetching을 하는거였는데, 이유는 밝히지 못했습니다.
-과제 제출 후 계속 공부해볼 계획입니다.
+특이한건 pre render때 fetching을 해놓고 hydrate하면서 다시 fetching을 하는 것 이었는데, 이유는 밝히지 못했습니다.
+추후 계속 공부해볼 계획입니다.
 ```
 
 #### 해결
